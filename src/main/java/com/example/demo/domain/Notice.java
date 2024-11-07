@@ -5,38 +5,36 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name="Notice", schema = "customer")
+@Table(name="notice")
 public class Notice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private int id;
 
-    @Column(name="Title")
+    @Column(name="title")
     private String title;
 
-    @Column(name="Text")
+    @Column(name="text")
     private String text;
 
-    @Column(name="Date")
+    @Column(name="date")
     private Date date;
 
-    @Column(name="CreateBy")
+    @Column(name="create_by")
     private String createBy;
 
-    @Column(name="CreateOn")
+    @Column(name="create_on")
     private Date createOn;
 
-    @Column(name="ModifiedBy")
+    @Column(name="modified_by")
     private String modifiedBy;
 
-    @Column(name="ModifiedOn")
+    @Column(name="modified_on")
     private Date modifiedOn;
 
-    @Column(name="IsActive")
+    @Column(name="is_active")
     private Boolean isActive;
-
-    @Column(name="FID")
-    private String fId;
 
     public String getLanguage() {
         return language;
@@ -121,25 +119,16 @@ public class Notice {
         isActive = active;
     }
 
-    public String getfId() {
-        return fId;
-    }
-
-    public void setfId(String fId) {
-        this.fId = fId;
-    }
-
-
     public Notice() {
 
     }
 
-    public Notice(int id, String title, String text, Date date, String createBy, Date createOn) {
-        this.id = id;
+    public Notice(String title, String text, Date date, String createBy, Date createOn, boolean isActive) {
         this.title = title;
         this.text = text;
         this.date = date;
         this.createBy = createBy;
         this.createOn = createOn;
+        this.isActive = isActive;
     }
 }

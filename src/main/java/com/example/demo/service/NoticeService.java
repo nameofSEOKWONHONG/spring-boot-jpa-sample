@@ -13,7 +13,7 @@ public interface NoticeService {
     public Page<Notice> findByPage(NoticeSearchCriteria criteria);
     public List<Notice> findAll();
     public Notice save(NoticeDto notice);
-    public Optional<Notice> findById(Integer id);
+    public Notice findById(Integer id);
     public Notice update(Integer id, NoticeDto noticeDto);
     public void delete(Integer id);
 }

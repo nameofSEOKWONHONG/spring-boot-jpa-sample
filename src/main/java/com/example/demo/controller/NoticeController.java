@@ -22,7 +22,7 @@ public class NoticeController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Notice>> getNoticeByID(@PathVariable("id") int id) {
+    public ResponseEntity<Notice> getNoticeByID(@PathVariable("id") int id) {
         var notice = noticeService.findById(id);
         return ResponseEntity.ok(notice);
     }

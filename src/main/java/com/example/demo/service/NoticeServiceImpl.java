@@ -47,16 +47,6 @@ public class NoticeServiceImpl implements NoticeService {
         return noticeRepository.findAll(spec, pageable);
     }
 
-    private long getTotalCount(List<Predicate> predicates) {
-        CriteriaBuilder qb = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Long> cq = qb.createQuery(Long.class);
-        cq.select(qb.count(cq.from(Notice.class)));
-        if(predicates.size() > 0) {
-            cq.where(predicates.toArray(new Predicate[predicates.size()]));
-        }
-        return entityManager.createQuery(cq).getSingleResult();
-    }
-
     @Override
     public List<Notice> findAll() {
         return noticeRepository.findAll();
@@ -77,8 +67,8 @@ public class NoticeServiceImpl implements NoticeService {
     }
 
     @Override
-    public Optional<Notice> findById(Integer id) {
-        return noticeRepository.findById(id);
+    public Notice findById(Integer id) {
+        return noticeRepository.findById(id).orElse(null);
     }
 
     @Override
