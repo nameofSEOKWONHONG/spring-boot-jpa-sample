@@ -1,0 +1,9 @@
+spring:
+  data:
+    mongodb:
+      primary:
+        uri: mongodb+srv://{username}:{password}@{domain}
+        database: {database}
+      secondary:
+        uri: mongodb+srv://{username}:{password}@{domain}
+        database: {database}

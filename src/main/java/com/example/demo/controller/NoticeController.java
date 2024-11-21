@@ -3,13 +3,12 @@ package com.example.demo.controller;
 import com.example.demo.domain.Notice;
 import com.example.demo.dto.NoticeDto;
 import com.example.demo.dto.NoticeSearchCriteria;
-import com.example.demo.dto.PaginatedResponse;
+import com.example.demo.dto.PaginatedResults;
 import com.example.demo.service.NoticeServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin("*")
 @RestController
@@ -34,9 +33,9 @@ public class NoticeController {
     }
 
     @GetMapping("/{page}/{size}")
-    public ResponseEntity<PaginatedResponse<Notice>> getNoticePage(@PathVariable int page, @PathVariable int size) {
+    public ResponseEntity<PaginatedResults<Notice>> getNoticePage(@PathVariable int page, @PathVariable int size) {
         var result = noticeService.findByPage(page, size);
-        var response = new PaginatedResponse<>(
+        var response = new PaginatedResults<>(
                 result.getContent(),
                 result.getTotalElements(),
                 result.getTotalPages(),
@@ -47,9 +46,9 @@ public class NoticeController {
     }
 
     @PostMapping("/notices")
-    public ResponseEntity<PaginatedResponse<Notice>> getNoticePage(@RequestBody NoticeSearchCriteria criteria) {
+    public ResponseEntity<PaginatedResults<Notice>> getNoticePage(@RequestBody NoticeSearchCriteria criteria) {
         var result = noticeService.findByPage(criteria);
-        var response = new PaginatedResponse<>(
+        var response = new PaginatedResults<>(
                 result.getContent(),
                 result.getTotalElements(),
                 result.getTotalPages(),

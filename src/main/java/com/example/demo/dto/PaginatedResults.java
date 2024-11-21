@@ -2,7 +2,7 @@ package com.example.demo.dto;
 
 import java.util.List;
 
-public class PaginatedResponse<T> {
+public class PaginatedResults<T> {
     private List<T> content;
     private long totalElements;
     private int totalPages;
@@ -10,7 +10,7 @@ public class PaginatedResponse<T> {
     private int pageSize;
 
     // Constructor
-    public PaginatedResponse(List<T> content, long totalElements, int totalPages, int pageNumber, int pageSize) {
+    public PaginatedResults(List<T> content, long totalElements, int totalPages, int pageNumber, int pageSize) {
         this.content = content;
         this.totalElements = totalElements;
         this.totalPages = totalPages;
